@@ -126,8 +126,9 @@ function App(){
 
     return (
         <React.Fragment>
+            <section className='loading'><i class="fas fa-spinner loading__img"></i></section>
             <Clock/>
-            <Calendar></Calendar>
+            <Calendar/>
             <section className='navBar check'>
                 <button 
                     className='navBar__hidden'
