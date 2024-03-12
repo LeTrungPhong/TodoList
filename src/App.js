@@ -14,12 +14,11 @@ function App(){
     // add-table
     const [nameTable,setNameTable] = useState('');
 
-    console.log(nameTable)
-
     const addTable = () => {
         const newItem = {
             id: `${Date.now().toString(36) + Math.random().toString(36).substring(2)}`,
-            title: `${nameTable}`
+            title: `${nameTable}`,
+            idBoard: `${arrBoard[localStorage.getItem('index')].id}`
         };
         fetch('http://localhost:3000/table', {
             method: 'POST',
@@ -60,30 +59,30 @@ function App(){
                 arrayBoard.push(courses[i]);
             }
             setArrBoard(arrayBoard);
-        });
 
-        let arrayTable = [];
-        fetch("http://localhost:3000/table")
-            .then((res) => res.json())
-            .then(function (courses) {
-                
-                if(!localStorage.getItem('index')){
-                    localStorage.setItem('index',0);
-                }
+            let arrayTable = [];
+            fetch("http://localhost:3000/table")
+                .then((res) => res.json())
+                .then(function (courses) {
+                    
+                    if(!localStorage.getItem('index')){
+                        localStorage.setItem('index',0);
+                    }
 
-                const index = localStorage.getItem("index");
-
-                console.log(index);
-
-                if(arrayBoard.length != 0){
-                    for(let i = 0; i < courses.length; ++i){
-                        if(courses[i].idBoard === arrayBoard[index].id){
-                            arrayTable.push(courses[i]);
+                    const index = localStorage.getItem("index");
+                    console.log(index);
+                    console.log(arrayBoard);
+                    if(arrayBoard.length != 0){
+                        console.log(true);
+                        for(let i = 0; i < courses.length; ++i){
+                            if(courses[i].idBoard === arrayBoard[index].id){
+                                arrayTable.push(courses[i]);
+                            }
                         }
                     }
-                }
-                setTable(arrayTable);
-            });
+                    setTable(arrayTable);
+                });
+        });
     }, []);
 
     function handleFollowBoard(course){
@@ -121,8 +120,6 @@ function App(){
         setNameBoard('');
     };
     // /navBar
-
-
 
     return (
         <React.Fragment>
@@ -172,6 +169,7 @@ function App(){
                 </div>
             </section>
             <div className="content-list-table">
+                <div className='content-list-table__title'>{arrBoard[localStorage.getItem('index')] ? arrBoard[localStorage.getItem('index')].title : ""}</div>
                 {
                     table.map((course) => {
                         return (

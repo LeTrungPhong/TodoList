@@ -14,7 +14,9 @@ setTimeout(() => {
     for(let i = 0; i < buttonClick.length; ++i){
         if(!buttonClick[i].classList.contains('navBar__hidden')){
             buttonClick[i].addEventListener('click', () => {
-                window.location.reload();
+                setTimeout(() => {
+                    window.location.reload();
+                },100);
             });
         }
     }
