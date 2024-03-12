@@ -15,6 +15,7 @@
   display: flex;
   flex-direction: row;
   overflow-y: hidden;
+  position: relative;
 }
 .container::-webkit-scrollbar {
   height: 15px;
@@ -30,12 +31,13 @@
   display: flex;
   flex-direction: row;
   height: 100%;
+  margin: 10px 10px 10px 330px;
 }
 .container .content-list-table .content-item .content {
   min-width: 300px;
   max-width: 300px;
   background-color: rgba(0, 0, 0, 0.2);
-  padding: 5%;
+  padding: 16px;
   min-height: 0;
   max-height: 90%;
   display: flex;
@@ -106,9 +108,10 @@
 .container .content-list-table .content-item .content__insert-input {
   all: unset;
   height: 40px;
-  width: calc(100% - 40px - 10px - 10px);
+  width: calc(100% - 40px - 10px);
   background-color: rgb(212, 212, 212);
   padding: 3px 4%;
+  border-radius: 2px;
   box-sizing: border-box;
   letter-spacing: 1px;
 }
@@ -165,6 +168,7 @@
   padding: 3px 4%;
   box-sizing: border-box;
   transition: 0.2s ease;
+  border-radius: 2px;
 }
 .container .content-list-table .content-item .content__list-item-text:hover {
   width: calc(100% - 40px);
@@ -574,4 +578,97 @@
   border-radius: 4px;
   background-color: rgba(102, 102, 102, 0.1);
   padding: 5px;
+}
+.container .navBar {
+  height: 100%;
+  width: 300px;
+  background-color: #1f1f1f;
+  padding: 100px 5px;
+  position: fixed;
+  color: #fff;
+  z-index: 1;
+  transition: 5s ease-in-out;
+}
+.container .navBar__hidden {
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  transform: translatex(50%);
+  border-radius: 100px;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 5px 1px rgb(59, 59, 59);
+}
+.container .navBar__hidden-item {
+  color: #1f1f1f;
+  font-size: 25px;
+}
+.container .navBar__board-add {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(66, 66, 66);
+  padding-bottom: 2px;
+}
+.container .navBar__board-add-text {
+  padding: 10px;
+}
+.container .navBar__board-add-button {
+  all: unset;
+  padding: 8px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container .navBar__board-add-button-img {
+  font-size: 12px;
+}
+.container .navBar__board-add-button:hover {
+  background-color: #a3a3a3;
+}
+.container .navBar__board-input {
+  all: unset;
+  width: 100%;
+  margin-top: 5px;
+  background-color: #6b6b6b;
+  border-radius: 5px;
+  padding: 8px;
+  box-sizing: border-box;
+  color: #d3d3d3;
+  letter-spacing: 1px;
+}
+.container .navBar__board-input::-moz-placeholder {
+  color: #d3d3d3;
+}
+.container .navBar__board-input::placeholder {
+  color: #d3d3d3;
+}
+.container .navBar__board-list {
+  padding: 2px 0px;
+}
+.container .navBar__board-list-item {
+  all: unset;
+  display: block;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.container .navBar__board-list-item-img {
+  font-size: 20px;
+}
+.container .navBar__board-list-item:hover {
+  background-color: #6b6b6b;
 }/*# sourceMappingURL=App.css.map */

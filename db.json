@@ -1,24 +1,46 @@
 {
+  "board": [
+    {
+      "id": "0",
+      "title": "Phong's board"
+    },
+    {
+      "id": "1",
+      "title": "Trung's board"
+    },
+    {
+      "id": "2",
+      "title": "Tran's board"
+    },
+    {
+      "id": "3",
+      "title": "Phuc's board"
+    },
+    {
+      "id": "ltn21mg2dloo2doacs",
+      "title": "Dinh's board"
+    }
+  ],
   "table": [
     {
       "id": "0",
-      "title": "Todo app"
+      "title": "Todo app",
+      "idBoard": "0"
     },
     {
       "id": "ltjvs8q3jyiuu62z1tb",
-      "title": "To app"
+      "title": "To app",
+      "idBoard": "2"
     },
     {
       "id": "ltjw8ekgb411c6bxat",
-      "title": "table"
-    },
-    {
-      "id": "ltlpxb669frrcs7kvo",
-      "title": "aaaaa"
+      "title": "table",
+      "idBoard": "3"
     },
     {
       "id": "ltlq298c2e29apiiult",
-      "title": "New list ask"
+      "title": "New list ask",
+      "idBoard": "3"
     }
   ],
   "item-table": [

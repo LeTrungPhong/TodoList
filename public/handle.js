@@ -1,9 +1,11 @@
 setTimeout(() => {
     var buttonClick = document.getElementsByTagName('button');
     for(let i = 0; i < buttonClick.length; ++i){
-        buttonClick[i].addEventListener('click', () => {
-            window.location.reload();
-        });
+        if(!buttonClick[i].classList.contains('navBar__hidden')){
+            buttonClick[i].addEventListener('click', () => {
+                window.location.reload();
+            });
+        }
     }
   
     var calendar = document.querySelector('.calendar');
@@ -67,11 +69,6 @@ setTimeout(() => {
         clockHour.style.transform = `rotate(${rotateHour}deg)`;
     },1000);
   
-    var block = document.querySelector('.block');
-    block.addEventListener('dragstart',() => {
-  
-    });
-  
     var contentBarHidden = document.getElementsByClassName('content__bar-hidden');
     var contentBarForm = document.getElementsByClassName('content__bar-form');
     var contentBarFormTimes = document.getElementsByClassName('content__bar-form-times');
@@ -84,4 +81,31 @@ setTimeout(() => {
             contentBarForm[i].classList.toggle('dp-n');
         })
     }
+
+    var contentListItem = document.querySelector('.content__list-item');
+    var navBar = document.querySelector('.navBar');
+    var navBarHidden = document.querySelector('.navBar__hidden');
+    var navBarHiddenItem = document.getElementsByClassName('navBar__hidden-item');
+    var navBarBoardAdd = document.querySelector('.navBar__board-add');
+    
+    navBarHidden.addEventListener('click', () => {
+        if(navBar.classList.contains('check')){
+            for(let i = 0; i < navBarHiddenItem.length; ++i){
+                navBarHiddenItem[i].classList.toggle('dp-n');
+            }
+            navBar.style.width = "auto";
+            contentListItem.style.margin = `10px 10px 10px ${navBar.clientWidth - 30}px`;
+            navBarBoardAdd.style.justifyContent = "center";
+            navBar.classList.remove('check');
+        } else {
+            for(let i = 0; i < navBarHiddenItem.length; ++i){
+                navBarHiddenItem[i].classList.toggle('dp-n');
+            }
+            navBar.style.width = "300px";
+            contentListItem.style.margin = `10px 10px 10px ${navBar.clientWidth + 30}px`;
+            navBarBoardAdd.style.justifyContent = "space-between";
+            navBar.classList.add('check');
+        }
+    })
+
   },1000);
