@@ -136,7 +136,7 @@ function Calendar(){
         <section className="calendar dp-n">
             <div className="calendar__choice">
                 <button 
-                    className="calendar__choice-back"
+                    className="calendar__choice-back non-button"
                     onClick={handleBackMonthYear}
                 >
                     <i className="fas fa-chevron-left"></i>
@@ -151,7 +151,7 @@ function Calendar(){
                             arrMonth.map((course) => {
                                 return (
                                     <button 
-                                        className="calendar__choice-month-list-item"
+                                        className="calendar__choice-month-list-item non-button"
                                         onClick={() => handleChoiceMonth(course)}
                                     >
                                         {course}
@@ -171,7 +171,7 @@ function Calendar(){
                             arrYear.map((course) => {
                                 return (
                                     <button 
-                                        className="calendar__choice-year-list-item"
+                                        className="calendar__choice-year-list-item non-button"
                                         onClick={() => handleChoiceYear(course)}
                                     >
                                         {course}
@@ -182,7 +182,7 @@ function Calendar(){
                     </div>
                 </div>
                 <button 
-                    className="calendar__choice-continue"
+                    className="calendar__choice-continue non-button"
                     onClick={handleContinueMonthYear}
                 >
                     <i className="fas fa-chevron-right"></i>
@@ -205,7 +205,7 @@ function Calendar(){
                         day.map((course) => {
                             return (
                                 <button 
-                                    className="calendar__form-day-item"
+                                    className="calendar__form-day-item non-button"
                                     onClick={() => handleDays(course)}
                                 >
                                     {course}

@@ -6,6 +6,8 @@ import Table from './Table';
 import Clock from './Clock';
 import Calendar from './Calendar';
 import NavBar from './NavBar';
+import Header from './Header';
+import Sign from './Sign';
 
 const { useState } = React;
 const { useEffect } = React;
@@ -121,19 +123,32 @@ function App(){
     };
     // /navBar
 
+    var navBoardListItem = document.getElementsByClassName('navBar__board-list-item');
+
+    if(navBoardListItem[localStorage.getItem('index')]){
+        navBoardListItem[localStorage.getItem('index')].style.backgroundColor = '#9c9c9c'
+    }
+
     return (
         <React.Fragment>
             <section className='loading'><i class="fas fa-spinner loading__img"></i></section>
             <Clock/>
             <Calendar/>
+            <Header/>
+            <Sign/>
             <section className='navBar check'>
                 <button 
-                    className='navBar__hidden'
+                    className='navBar__hidden non-button'
                     onClick={() => clickHidden()}
                 >
                     <i class="fas fa-angle-right navBar__hidden-item dp-n"></i>
                     <i class="fas fa-angle-left navBar__hidden-item"></i>
                 </button>
+                <section className='navBar__tool'>
+                    <div className='navBar__tool-title'><p className='navBar__tool-title-text'>Your tools</p></div>
+                    <button className='navBar__tool-item non-button'><i class="fas fa-calendar-alt navBar__tool-item-img" style={{ fontSize: 24 }}></i><p className='navBar__tool-item-text'>Calendar</p></button>
+                    <button className='navBar__tool-item non-button'><i class="far fa-clock navBar__tool-item-img" style={{ fontSize: 24 }}></i><p className='navBar__tool-item-text'>Clock</p></button>
+                </section>
                 <section className='navBar__board'>
                     <div className='navBar__board-add'>
                         <p className={`navBar__board-add-text ${hidden ? "" : "dp-n"}`}>Your boards</p>
@@ -155,18 +170,6 @@ function App(){
                         }
                     </div>
                 </section>
-            </section>
-            <section className="content__select dp-n">
-                <div className="content__select-date">
-                    <div className="content__select-date-form">
-                        <p className="content__select-date-form-item"></p>
-                        /
-                        <p className="content__select-date-form-item"></p>
-                        /
-                        <p className="content__select-date-form-item"></p>
-                    </div>
-                    <button className="content__select-date-button"><i className="fas fa-calendar-alt"></i></button>
-                </div>
             </section>
             <div className="content-list-table">
                 <div className='content-list-table__title'>{arrBoard[localStorage.getItem('index')] ? arrBoard[localStorage.getItem('index')].title : ""}</div>

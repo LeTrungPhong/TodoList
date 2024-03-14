@@ -1,0 +1,28 @@
+@mixin resetAll {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Times New Roman";
+    font-size: $font-size-resetAll;
+    font-family: monospace;
+}
+
+@mixin resetInputText {
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
+@mixin resetLink {
+    text-decoration: none;
+}
+
+@mixin contentFormToolButton {
+    font-size: 18px;
+    cursor: pointer;
+    padding: 7px 20px;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    background-color: rgba($color: #000000, $alpha: 0);
+    transition: 0.25s ease-in-out;
+}

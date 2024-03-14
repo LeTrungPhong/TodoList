@@ -127,19 +127,6 @@ function Table(course){
                         </div>
                     </section>
                     <h1 className="content__title">{course.title}</h1>
-                    <section className="content__insert">
-                        <input 
-                            value={job} 
-                            className="content__insert-input" type="text" placeholder="Add your new todo..."
-                            onChange={e => setJob(e.target.value)}
-                        />
-                        <button 
-                            className="content__insert-submit" type="submit"
-                            onClick={() => {handleSubmit()}}
-                        >
-                            <i className="fas fa-plus content__insert-submit-img"></i>
-                        </button>
-                    </section>
                     <ul className={`content__list `}>
                         {
                             jobs.map((job) => {
@@ -161,8 +148,29 @@ function Table(course){
                         }
                     </ul>
                     <div className={`content__undefined ${jobs.length ? "dp-n" : ""} `}>You should create todo</div>
+                    <div 
+                        className='content__hidden-insert'
+                    >
+                        Add a card
+                    </div>
+                    <section className="content__insert dp-n">
+                        <input 
+                            value={job} 
+                            className="content__insert-input" type="text" placeholder=" Add your new todo..."
+                            onChange={e => setJob(e.target.value)}
+                        />
+                        <div className='content__insert-form'>
+                            <button 
+                                className="content__insert-submit" type="submit"
+                                onClick={() => {handleSubmit()}}
+                            >
+                                Add card
+                            </button>
+                            <div className='content__insert-close'><i class="fas fa-times content__insert-close-img"></i></div>
+                        </div>
+                    </section>
                     <section className="content__footer">
-                        <p className="content__footer-count">{`You have ${jobs.length} pending tasks`}</p>
+                        <p className="content__footer-count">{`(${jobs.length}) pending tasks`}</p>
                         <button 
                             className="content__footer-clear"
                             onClick={() => {resetData()}}
