@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 const { useState } = React;
 const { useEffect } = React;
 
-function Header(){
+function Header(course){
     return (
         <section class="header">
             <div class="header__dashboard-name"><i class="fab fa-trello header__dashboard-name-img"></i><p className='header__dashboard-name-text'>Trello</p></div>
@@ -25,7 +25,7 @@ function Header(){
                 <i class="far fa-user header__dashboard-account-avatar"></i>
                 <div class="header__dashboard-account-name">
                     <p class="header__dashboard-account-name-text">
-                        Le Trung Phong
+                        {course.name ? course.name : "Non-user"}
                     </p>
                 </div>
                 <div class="header__dashboard-account-job">
