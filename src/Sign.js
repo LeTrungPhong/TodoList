@@ -5,9 +5,6 @@ const { useState } = React;
 const { useEffect } = React;
 
 function Sign(){
-
-    
-
     return (
         <div></div>
     )

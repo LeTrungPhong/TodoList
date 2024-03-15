@@ -351,3 +351,18 @@ setTimeout(() => {
         }
     }
 },1000);
+
+setTimeout(() => {
+    var navBarBoardListItemTool = document.getElementsByClassName('navBar__board-list-item-tool'); 
+    var navBarBoardListItemHidden = document.getElementsByClassName('navBar__board-list-item-hidden');
+    var navBarBoardListItemToolFormTimes = document.getElementsByClassName('navBar__board-list-item-tool-form-times'); 
+    
+    for(let i = 0; i < navBarBoardListItemHidden.length; ++i){
+        navBarBoardListItemHidden[i].addEventListener('click', () => {
+            navBarBoardListItemTool[i].classList.toggle('dp-n');
+        })
+        navBarBoardListItemToolFormTimes[i].addEventListener('click', () => {
+            navBarBoardListItemTool[i].classList.toggle('dp-n');
+        })
+    }
+},1000);

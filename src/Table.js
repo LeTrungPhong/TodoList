@@ -91,8 +91,8 @@ function Table(course){
         });
     }
 
-    const deleteTable = () => {
-        fetch(`http://localhost:3000/table/${course.id}`,{
+    const deleteTable = (idDeleteTable) => {
+        fetch(`http://localhost:3000/table/${idDeleteTable}`,{
             method: 'DELETE'
         }).then(res => {
             if(!res.ok){
@@ -107,6 +107,16 @@ function Table(course){
         .then(error => {
             console.log(error);
         });
+
+        fetch(`http://localhost:3000/item-table`)
+            .then((res) => res.json())
+            .then(courses => {
+                for(let i = 0; i < courses.length; ++i){
+                    if(courses[i].idTable === idDeleteTable){
+                        deleteData(courses[i].id);
+                    }
+                }
+            })
     }
 
     return (
@@ -120,7 +130,7 @@ function Table(course){
                             <div style={{"color": "#d3d3d3", "text-align": "center", "padding": "5px", "border-bottom": "1px solid #5e5e5e"}}>List actions</div>
                             <button 
                                 className="content__bar-form-delete"
-                                onClick={() => {deleteTable()}}
+                                onClick={() => {deleteTable(course.id)}}
                             >
                                 delete table
                             </button>

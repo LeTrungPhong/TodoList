@@ -73,10 +73,12 @@ function App(){
                         localStorage.setItem('index',0);
                     }
 
-                    const index = localStorage.getItem("index");
+                    if(!arrayBoard[localStorage.getItem("index")]){
+                        localStorage.setItem('index',0);
+                    }
                     if(arrayBoard.length != 0){
                         for(let i = 0; i < courses.length; ++i){
-                            if(courses[i].idBoard === arrayBoard[index].id){
+                            if(courses[i].idBoard === arrayBoard[localStorage.getItem("index")].id){
                                 arrayTable.push(courses[i]);
                             }
                         }
@@ -122,6 +124,80 @@ function App(){
         });
         setNameBoard('');
     };
+
+    const deleteData = (id) => {
+        fetch(`http://localhost:3000/item-table/${id}`,{
+            method: 'DELETE'
+        }).then(res => {
+            if(!res.ok){
+                console.log("Problem");
+                return;
+            }
+            return res.json();
+        })
+        .then(data => {
+            console.log('succesful');
+        })
+        .then(error => {
+            console.log(error);
+        });
+    }
+
+    const deleteTable = (idDeleteTable) => {
+        fetch(`http://localhost:3000/table/${idDeleteTable}`,{
+            method: 'DELETE'
+        }).then(res => {
+            if(!res.ok){
+                console.log("Problem");
+                return;
+            }
+            return res.json();
+        })
+        .then(data => {
+            console.log('succesful');
+        })
+        .then(error => {
+            console.log(error);
+        });
+
+        fetch(`http://localhost:3000/item-table`)
+            .then((res) => res.json())
+            .then(courses => {
+                for(let i = 0; i < courses.length; ++i){
+                    if(courses[i].idTable === idDeleteTable){
+                        deleteData(courses[i].id);
+                    }
+                }
+            })
+    }
+
+    const deleteBoard = (idDeleteBoard) => {
+        fetch(`http://localhost:3000/board/${idDeleteBoard}`,{
+            method: 'DELETE'
+        }).then(res => {
+            if(!res.ok){
+                console.log("Problem");
+                return;
+            }
+            return res.json();
+        })
+        .then(data => {
+            console.log('succesful');
+        })
+        .then(error => {
+            console.log(error);
+        });
+
+        fetch(`http://localhost:3000/table`)
+            .then((res) => res.json())
+            .then(courses => {
+                for(let i = 0; i < courses.length; ++i){
+                    if(courses[i].idBoard === idDeleteBoard){
+                        deleteTable(courses[i].id);
+                    }
+                }
+            })
+    }
     // /navBar
 
 
@@ -391,7 +467,7 @@ function App(){
                                                     <div style={{"color": "#d3d3d3", "text-align": "center", "padding": "5px", "border-bottom": "1px solid #5e5e5e"}}>List actions</div>
                                                     <button 
                                                         className="navBar__board-list-item-tool-form-delete"
-                                                        // onClick={() => {deleteTable()}}
+                                                        onClick={() => deleteBoard(course.id)}
                                                     >
                                                         delete board
                                                     </button>
