@@ -123,7 +123,7 @@ function Table(course){
         <React.Fragment>
             <div className="content-item">
                 <article className="content">
-                    <section className="content__bar">
+                    <section className={`content__bar ${course.boolean ? "" : "dp-n"}`}>
                         <i className="fas fa-ellipsis-h content__bar-hidden"></i>
                         <div className="content__bar-form dp-n">
                             <i class="fas fa-times content__bar-form-times"></i>
@@ -145,7 +145,7 @@ function Table(course){
                                         <li className="content__list-item">
                                             <p className="content__list-item-text">{job.name}</p>
                                             <button 
-                                                className="content__list-item-delete" 
+                                                className={`content__list-item-delete ${course.boolean ? "" : "dp-n"}`}
                                                 type="submit"
                                                 onClick={() => {deleteData(job.id)}}
                                             >
@@ -159,7 +159,7 @@ function Table(course){
                     </ul>
                     <div className={`content__undefined ${jobs.length ? "dp-n" : ""} `}>You should create todo</div>
                     <div 
-                        className='content__hidden-insert'
+                        className={`content__hidden-insert ${course.boolean ? "" : "dp-n"}`}
                     >
                         Add a card
                     </div>
@@ -171,7 +171,7 @@ function Table(course){
                         />
                         <div className='content__insert-form'>
                             <button 
-                                className="content__insert-submit" type="submit"
+                                className={`content__insert-submit ${course.boolean ? "" : "dp-n"}`} type="submit"
                                 onClick={() => {handleSubmit()}}
                             >
                                 Add card
@@ -182,7 +182,7 @@ function Table(course){
                     <section className="content__footer">
                         <p className="content__footer-count">{`(${jobs.length}) pending tasks`}</p>
                         <button 
-                            className="content__footer-clear"
+                            className={`content__footer-clear ${course.boolean ? "" : "dp-n"}`}
                             onClick={() => {resetData()}}
                         >
                             Clear All

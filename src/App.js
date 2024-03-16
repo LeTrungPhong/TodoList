@@ -13,6 +13,11 @@ const { useState } = React;
 const { useEffect } = React;
 
 function App(){
+
+    // show
+
+    // /show
+
     // add-table
     const [nameTable,setNameTable] = useState('');
 
@@ -52,14 +57,28 @@ function App(){
     const [arrBoard, setArrBoard] = useState([]);
     const [table,setTable] = useState([]);
 
+    const [show,setShow] = useState(false);
+
     useEffect(() => {
+
         let arrayBoard = [];
         fetch("http://localhost:3000/board")
         .then((res) => res.json())
         .then(function(courses) {
-            for(let i = 0; i < courses.length; ++i){
-                if(localStorage.getItem('idUser') === courses[i].idUser){
-                    arrayBoard.push(courses[i]);
+            if(!localStorage.getItem('indexCommunity')){
+                localStorage.setItem('indexCommunity',0);
+            }
+            if(localStorage.getItem('indexCommunity') == 0){
+                for(let i = 0; i < courses.length; ++i){
+                    if(courses[i].accessModifier === 'public'){
+                        arrayBoard.push(courses[i]);
+                    }
+                }
+            } else {
+                for(let i = 0; i < courses.length; ++i){
+                    if(localStorage.getItem('idUser') === courses[i].idUser){
+                        arrayBoard.push(courses[i]);
+                    }
                 }
             }
             setArrBoard(arrayBoard);
@@ -72,7 +91,6 @@ function App(){
                     if(!localStorage.getItem('index')){
                         localStorage.setItem('index',0);
                     }
-
                     if(!arrayBoard[localStorage.getItem("index")]){
                         localStorage.setItem('index',0);
                     }
@@ -84,9 +102,18 @@ function App(){
                         }
                     }
                     setTable(arrayTable);
+                    console.log(localStorage.getItem('idUser') + " " + arrayBoard[localStorage.getItem('index')].idUser);
+                    if(localStorage.getItem('idUser') === arrayBoard[localStorage.getItem('index')].idUser){
+                        setShow(true);
+                    } else {
+                        setShow(false);
+                    }
+
                 });
         });
     }, []);
+
+    console.log(show);
 
     function handleFollowBoard(course){
         for(let i = 0; i < arrBoard.length; ++i){
@@ -103,7 +130,8 @@ function App(){
         const newItem = {
             id: `${Date.now().toString(36) + Math.random().toString(36).substring(2)}`,
             title: `${nameBoard}`,
-            idUser: `${localStorage.getItem('idUser')}`
+            idUser: `${localStorage.getItem('idUser')}`,
+            accessModifier: "private"
         };
         if(!localStorage.getItem('idUser')) return;
         fetch('http://localhost:3000/board', {
@@ -198,6 +226,39 @@ function App(){
                 }
             })
     }
+
+    const changeAccessModifier = (course) => {
+        const newItem = {
+            "accessModifier": `${course.accessModifier === 'public' ? 'private' : 'public'}`
+        }
+        fetch(`http://localhost:3000/board/${course.id}`,{
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newItem)
+        }).then(res => {
+            if(!res.ok){
+                console.log("Problem");
+                return;
+            }
+            return res.json();
+        })
+        .then(data => {
+            console.log("success");
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+
+    const clickCommunity = () => {
+        localStorage.setItem('indexCommunity',0);
+    }
+
+    const clickYourSelf = () => {
+        localStorage.setItem('indexCommunity',1);
+    }
     // /navBar
 
 
@@ -205,8 +266,20 @@ function App(){
     var navBoardListItem = document.getElementsByClassName('navBar__board-list-item');
 
     if(navBoardListItem[localStorage.getItem('index')]){
-        navBoardListItem[localStorage.getItem('index')].style.backgroundColor = '#9c9c9c'
+        navBoardListItem[localStorage.getItem('index')].style.backgroundColor = '#9c9c9c';
     }
+
+    var navBarCommunity = document.getElementsByClassName('navBar__community-button'); 
+
+    console.log(navBarCommunity);
+    for(let i = 0; i < navBarCommunity.length; ++i){
+        if(localStorage.getItem('indexCommunity') == 0){
+            navBarCommunity[0].style.backgroundColor = '#9c9c9c';
+        } else {
+            navBarCommunity[1].style.backgroundColor = '#9c9c9c';
+        }
+    }
+
     //
 
     // sign
@@ -341,7 +414,7 @@ function App(){
                                 <input
                                     value={passwordSignIn}
                                     onChange={e => setPasswordSignIn(e.target.value)}
-                                    type="text"
+                                    type="password"
                                     class="sign-account-in-form__input"
                                     placeholder=" Password"
                                     name=""
@@ -386,13 +459,13 @@ function App(){
                                     onChange={e => setUserNameSignUp(e.target.value)}
                                     type="text"
                                     class="sign-account-up-form__input"
-                                    placeholder=" Usename"
+                                    placeholder=" Username"
                                     name=""
                                 />
                                 <input
                                     value={passwordSignUp}
                                     onChange={e => setPasswordSignUp(e.target.value)}
-                                    type="text"
+                                    type="password"
                                     class="sign-account-up-form__input"
                                     placeholder=" Password"
                                     name=""
@@ -433,10 +506,25 @@ function App(){
                     <i class="fas fa-angle-right navBar__hidden-item dp-n"></i>
                     <i class="fas fa-angle-left navBar__hidden-item"></i>
                 </button>
+                <section className='navBar__community'>
+                    <div className='navBar__community-title'><p className={`navBar__community-title-text ${hidden ? "" : "dp-n"}`}>Community</p></div>
+                    <button 
+                        className='navBar__community-button'
+                        onClick={() => clickCommunity()}
+                    >
+                        <i class="fas fa-globe navBar__community-button-img"></i><p className={`navBar__community-button-text ${hidden ? "" : "dp-n"}`}>Public board</p>
+                    </button>
+                    <button 
+                        className='navBar__community-button'
+                        onClick={() => clickYourSelf()}
+                    >
+                        <i class="far fa-user navBar__community-button-img"></i><p className={`navBar__community-button-text ${hidden ? "" : "dp-n"}`}>Your board</p>
+                    </button>
+                </section>
                 <section className='navBar__tool'>
-                    <div className='navBar__tool-title'><p className='navBar__tool-title-text'>Your tools</p></div>
-                    <button className='navBar__tool-item non-button'><i class="fas fa-calendar-alt navBar__tool-item-img" style={{ fontSize: 24 }}></i><p className='navBar__tool-item-text'>Calendar</p></button>
-                    <button className='navBar__tool-item non-button'><i class="far fa-clock navBar__tool-item-img" style={{ fontSize: 24 }}></i><p className='navBar__tool-item-text'>Clock</p></button>
+                    <div className='navBar__tool-title'><p className={`navBar__tool-title-text ${hidden ? "" : "dp-n"}`}>Your tools</p></div>
+                    <button className='navBar__tool-item non-button'><i class="fas fa-calendar-alt navBar__tool-item-img" style={{ fontSize: 24 }}></i><p className={`navBar__tool-item-text ${hidden ? "" : "dp-n"}`}>Calendar</p></button>
+                    <button className='navBar__tool-item non-button'><i class="far fa-clock navBar__tool-item-img" style={{ fontSize: 24 }}></i><p className={`navBar__tool-item-text ${hidden ? "" : "dp-n"}`}>Clock</p></button>
                 </section>
                 <section className='navBar__board'>
                     <div className='navBar__board-add'>
@@ -457,7 +545,7 @@ function App(){
                                                 <i className="fas fa-chalkboard navBar__board-list-item-img"></i><p className={`navBar__board-list-item-title ${hidden ? "" : "dp-n"}`}>{course.title}</p>
                                             </button>
                                             <button 
-                                                className='navBar__board-list-item-hidden non-button'
+                                                className={`navBar__board-list-item-hidden non-button ${hidden ? "" : "dp-n"} ${course.idUser === localStorage.getItem('idUser') ? "" : "dp-n"}`}
                                             >
                                                 <i class="fas fa-ellipsis-h navBar__board-list-item-hidden-img"></i>
                                             </button>
@@ -466,10 +554,16 @@ function App(){
                                                     <i className="fas fa-times navBar__board-list-item-tool-form-times"></i>
                                                     <div style={{"color": "#d3d3d3", "text-align": "center", "padding": "5px", "border-bottom": "1px solid #5e5e5e"}}>List actions</div>
                                                     <button 
-                                                        className="navBar__board-list-item-tool-form-delete"
+                                                        className="navBar__board-list-item-tool-form-delete navBar__board-list-item-tool-form-item"
                                                         onClick={() => deleteBoard(course.id)}
                                                     >
-                                                        delete board
+                                                        Delete board
+                                                    </button>
+                                                    <button 
+                                                        className='navBar__board-list-item-tool-form-accessModifier navBar__board-list-item-tool-form-item'
+                                                        onClick={() => changeAccessModifier(course)}
+                                                    >
+                                                        {` Change to ${course.accessModifier === "public" ? "private" : "public"}`}
                                                     </button>
                                                 </div>
                                             </div>
@@ -489,12 +583,13 @@ function App(){
                             <Table
                                 id={course.id}
                                 title={course.title}
+                                boolean={show}
                             />
                         );
                     })
                 }
             </div>
-            <section className="add-table-form">
+            <section className={`add-table-form ${show ? "" : "dp-n"}`}>
                 <div className="add-table">
                     <input 
                         value={nameTable}

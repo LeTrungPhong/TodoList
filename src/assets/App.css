@@ -620,6 +620,29 @@
   z-index: 1;
   transition: 5s ease-in-out;
 }
+.container .navBar__community-title {
+  border-bottom: 1px solid rgb(66, 66, 66);
+  padding: 10px;
+  margin-bottom: 5px;
+}
+.container .navBar__community-button {
+  all: unset;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.container .navBar__community-button:hover {
+  background-color: #6b6b6b;
+}
+.container .navBar__community-button-img {
+  font-size: 20px;
+}
 .container .navBar__tool-title {
   border-bottom: 1px solid rgb(66, 66, 66);
   padding: 10px;
@@ -704,6 +727,19 @@
 }
 .container .navBar__board-list {
   padding: 2px 0px;
+  overflow-y: scroll;
+  max-height: 50vh;
+}
+.container .navBar__board-list::-webkit-scrollbar {
+  height: 20px;
+  width: 5px;
+}
+.container .navBar__board-list::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  box-shadow: inset 0 0 6px rgba(167, 167, 167, 0.5);
+}
+.container .navBar__board-list::-webkit-scrollbar-track {
+  background-color: #1f1f1f;
 }
 .container .navBar__board-list-item-form {
   position: relative;
@@ -735,7 +771,7 @@
 .container .navBar__board-list-item-tool-form {
   width: 100%;
 }
-.container .navBar__board-list-item-tool-form-delete {
+.container .navBar__board-list-item-tool-form-item {
   all: unset;
   width: 100%;
   cursor: pointer;
@@ -743,7 +779,7 @@
   box-sizing: border-box;
   color: rgb(211, 211, 211);
 }
-.container .navBar__board-list-item-tool-form-delete:hover {
+.container .navBar__board-list-item-tool-form-item:hover {
   background-color: #777777;
 }
 .container .navBar__board-list-item-tool-form-times {

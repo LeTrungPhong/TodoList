@@ -100,6 +100,7 @@ setTimeout(() => {
     var navBarToolItem = document.getElementsByClassName('navBar__tool-item');
     var navBarToolItemText = document.getElementsByClassName('navBar__tool-item-text');
     var navBarToolTitleText = document.querySelector('.navBar__tool-title-text');
+    var navBarBoardListItemHidden = document.getElementsByClassName('navBar__board-list-item-hidden');
 
     for(let i = 0; i < navBarToolItem.length; ++i){
         navBarToolItem[i].addEventListener('click', () => {
@@ -110,7 +111,6 @@ setTimeout(() => {
             }
         })
     }
-    
     navBarHidden.addEventListener('click', () => {
         if(navBar.classList.contains('check')){
             for(let i = 0; i < navBarHiddenItem.length; ++i){
@@ -120,10 +120,6 @@ setTimeout(() => {
             contentListTable.style.margin = `0px 10px 10px ${navBar.clientWidth - 100}px`;
             navBarBoardAdd.style.justifyContent = "center";
             navBar.classList.remove('check');
-            for(let i = 0; i < navBarToolItemText.length; ++i){
-                navBarToolItemText[i].classList.toggle('dp-n');
-            }
-            navBarToolTitleText.classList.toggle('dp-n');
         } else {
             for(let i = 0; i < navBarHiddenItem.length; ++i){
                 navBarHiddenItem[i].classList.toggle('dp-n');
@@ -132,10 +128,6 @@ setTimeout(() => {
             contentListTable.style.margin = `0px 10px 10px ${navBar.clientWidth + 30}px`;
             navBarBoardAdd.style.justifyContent = "space-between";
             navBar.classList.add('check');
-            for(let i = 0; i < navBarToolItemText.length; ++i){
-                navBarToolItemText[i].classList.toggle('dp-n');
-            }
-            navBarToolTitleText.classList.toggle('dp-n');
         }
     })
     

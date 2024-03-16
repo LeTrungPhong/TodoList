@@ -38,7 +38,7 @@ function Header(course){
                 ></i>
 
                 <div class="header__dashboard-account-nav dp-n">
-                    <a href="#" class="header__dashboard-account-nav-item"
+                    <a href="#" class="header__dashboard-account-nav-item" style={{margin: 1}}
                         >Sign in</a>
                     <a href="#" class="header__dashboard-account-nav-item"
                         >Sign up</a>

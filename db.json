@@ -41,57 +41,116 @@
     {
       "id": "0",
       "title": "Phong's board",
-      "idUser": "ltr9bl0j0uehf3cvadyk"
+      "idUser": "ltr9bl0j0uehf3cvadyk",
+      "accessModifier": "private"
     },
     {
       "id": "1",
       "title": "Trung's board",
-      "idUser": "ltr9vgus89fqqdhp2xw"
-    },
-    {
-      "id": "2",
-      "title": "Tran's board",
-      "idUser": "ltr9bl0j0uehf3cvadyk"
+      "idUser": "ltr9vgus89fqqdhp2xw",
+      "accessModifier": "private"
     },
     {
       "id": "3",
       "title": "Phuc's board",
-      "idUser": "ltr9vgus89fqqdhp2xw"
-    },
-    {
-      "id": "ltrc9673o6cs0xligtq",
-      "title": "hoc anh van",
-      "idUser": ""
+      "idUser": "ltr9vgus89fqqdhp2xw",
+      "accessModifier": "public"
     },
     {
       "id": "ltrcb9kxauizfe5s5x5",
       "title": "",
-      "idUser": "ltra53db99t7kbnfqgf"
+      "idUser": "ltra53db99t7kbnfqgf",
+      "accessModifier": "private"
     },
     {
       "id": "ltrcmg93cnwn9kmchyt",
       "title": "Bai tap java",
-      "idUser": "ltrcgvdyd9h93v22bkc"
+      "idUser": "ltrcgvdyd9h93v22bkc",
+      "accessModifier": "private"
     },
     {
       "id": "ltrcr7zw7wwi2q23h0s",
       "title": "123",
-      "idUser": "ltrcjmo2nk17bnxicl"
+      "idUser": "ltrcjmo2nk17bnxicl",
+      "accessModifier": "private"
     },
     {
       "id": "ltrd2mempam3qjlsm5",
       "title": "Bai tap pttkgt",
-      "idUser": "ltrcgvdyd9h93v22bkc"
+      "idUser": "ltrcgvdyd9h93v22bkc",
+      "accessModifier": "private"
     },
     {
       "id": "ltrekwrccgxq9aisbg8",
       "title": "first",
-      "idUser": "ltrejwkf0wxax3vwpcz"
+      "idUser": "ltrejwkf0wxax3vwpcz",
+      "accessModifier": "private"
     },
     {
       "id": "ltrel0opuxf4sneyys",
       "title": "second",
-      "idUser": "ltrejwkf0wxax3vwpcz"
+      "idUser": "ltrejwkf0wxax3vwpcz",
+      "accessModifier": "private"
+    },
+    {
+      "id": "lttvbjfofw4mhpoour",
+      "title": "adadad",
+      "idUser": "ltr9vgus89fqqdhp2xw",
+      "accessModifier": "private"
+    },
+    {
+      "id": "lttvvsryovcc3dr4e7",
+      "title": "che dinh",
+      "idUser": "ltr9bl0j0uehf3cvadyk",
+      "accessModifier": "private"
+    },
+    {
+      "id": "lttvvxno1g02f9tx0pr",
+      "title": "nguyen minh phuc",
+      "idUser": "ltr9bl0j0uehf3cvadyk",
+      "accessModifier": "private"
+    },
+    {
+      "id": "lttvw2s5hkszcn0tzge",
+      "title": "my house",
+      "idUser": "ltr9bl0j0uehf3cvadyk",
+      "accessModifier": "private"
+    },
+    {
+      "id": "lttvwcf02b44nkqiyn9",
+      "title": "numberic",
+      "idUser": "ltr9bl0j0uehf3cvadyk",
+      "accessModifier": "public"
+    },
+    {
+      "id": "lttvwnec5lsbc9kxu65",
+      "title": "ptttkgt",
+      "idUser": "ltr9bl0j0uehf3cvadyk",
+      "accessModifier": "public"
+    },
+    {
+      "id": "lttvwqijqsi80dqalsj",
+      "title": "dotnet",
+      "idUser": "ltr9bl0j0uehf3cvadyk",
+      "accessModifier": "private"
+    },
+    {
+      "id": "lttvwtqbdzzfbb4807a",
+      "title": "java",
+      "idUser": "ltr9bl0j0uehf3cvadyk",
+      "accessModifier": "public"
+    },
+    {
+      "id": "lttxr7244kbkxnc4v2c",
+      "title": "adada",
+      "idUser": "ltr9bl0j0uehf3cvadyk",
+      "accessModifier": "private"
+    },
+    {
+      "id": "lttxr9ecen8hc6xh895",
+      "title": "wqeqweq",
+      "idUser": "ltr9bl0j0uehf3cvadyk",
+      "accessModifier": "private"
     }
   ],
   "table": [
@@ -99,11 +158,6 @@
       "id": "0",
       "title": "Todo app",
       "idBoard": "0"
-    },
-    {
-      "id": "ltjvs8q3jyiuu62z1tb",
-      "title": "To app",
-      "idBoard": "2"
     },
     {
       "id": "ltjw8ekgb411c6bxat",
@@ -119,11 +173,6 @@
       "id": "ltoohl6ld2qc5g38a1w",
       "title": "aaaaaaa",
       "idBoard": "3"
-    },
-    {
-      "id": "ltoohoksre6kblnpse",
-      "title": "122222",
-      "idBoard": "2"
     },
     {
       "id": "ltrcrb91og72tu14f8a",
@@ -144,6 +193,21 @@
       "id": "ltrel2so9rty28kgkar",
       "title": "adada",
       "idBoard": "ltrekwrccgxq9aisbg8"
+    },
+    {
+      "id": "lttvqysdn91g33gz0fr",
+      "title": "adwww",
+      "idBoard": "lttvbjfofw4mhpoour"
+    },
+    {
+      "id": "lttywpuv3agjr47aei9",
+      "title": "adad",
+      "idBoard": "lttvwcf02b44nkqiyn9"
+    },
+    {
+      "id": "lttyx28t7g51n4fnkxi",
+      "title": "ad2313",
+      "idBoard": "lttvwnec5lsbc9kxu65"
     }
   ],
   "item-table": [
@@ -193,24 +257,9 @@
       "idTable": "0"
     },
     {
-      "id": "ltjy72q0uyb37nd7gbd",
-      "name": "giai toan",
-      "idTable": "ltjvs8q3jyiuu62z1tb"
-    },
-    {
-      "id": "ltjy78ven0wxygs6eie",
-      "name": "xac suat thong ke",
-      "idTable": "ltjvs8q3jyiuu62z1tb"
-    },
-    {
       "id": "ltk1avpvn11ohmtshtm",
       "name": "",
       "idTable": "ltjvnpxu2nvr3c4jn24"
-    },
-    {
-      "id": "ltlo4vmvhxuoxcpic7e",
-      "name": "do hoa may tinh",
-      "idTable": "ltjvs8q3jyiuu62z1tb"
     },
     {
       "id": "ltloni6ui2e72zo3ae",
@@ -321,6 +370,21 @@
       "id": "ltreit1cb0zayhcfk15",
       "name": "adadad",
       "idTable": "ltreimy82lhccsk9yqi"
+    },
+    {
+      "id": "lttvxnprhau4afcqxoa",
+      "name": "dawdawd",
+      "idTable": "0"
+    },
+    {
+      "id": "lttyws92xcg0biz7umg",
+      "name": "ad",
+      "idTable": "lttywpuv3agjr47aei9"
+    },
+    {
+      "id": "lttyx5p1juph2im1m9",
+      "name": "123444",
+      "idTable": "lttyx28t7g51n4fnkxi"
     }
   ]
 }
