@@ -2,26 +2,28 @@ import './assets/App.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Table from './Table';
-import Clock from './Clock';
-import Calendar from './Calendar';
+import Table from './Table/Table';
+import Clock from './Clock/Clock';
+import Calendar from './Calendar/Calendar';
 import NavBar from './NavBar';
-import Header from './Header';
-import Sign from './Sign';
+import Header from './Header/Header';
+import Sign from './Sign/Sign';
+import Board from './Board/Board';
 
 const { useState } = React;
 const { useEffect } = React;
 
 function App(){
-
-    // show
-
-    // /show
-
+    
     // add-table
     const [nameTable,setNameTable] = useState('');
 
     const addTable = () => {
+        if(nameTable === ""){
+            alert("Khong duoc de trong ten bang !");
+            return;
+        }
+
         const newItem = {
             id: `${Date.now().toString(36) + Math.random().toString(36).substring(2)}`,
             title: `${nameTable}`,
@@ -60,7 +62,6 @@ function App(){
     const [show,setShow] = useState(false);
 
     useEffect(() => {
-
         let arrayBoard = [];
         fetch("http://localhost:3000/board")
         .then((res) => res.json())
@@ -113,17 +114,6 @@ function App(){
         });
     }, []);
 
-    console.log(show);
-
-    function handleFollowBoard(course){
-        for(let i = 0; i < arrBoard.length; ++i){
-            if(course.id === arrBoard[i].id){
-                localStorage.setItem('index',i);
-                return;
-            }
-        }
-    }
-
     const [nameBoard, setNameBoard] = useState('');
 
     const addBoard = () => {
@@ -153,105 +143,6 @@ function App(){
         setNameBoard('');
     };
 
-    const deleteData = (id) => {
-        fetch(`http://localhost:3000/item-table/${id}`,{
-            method: 'DELETE'
-        }).then(res => {
-            if(!res.ok){
-                console.log("Problem");
-                return;
-            }
-            return res.json();
-        })
-        .then(data => {
-            console.log('succesful');
-        })
-        .then(error => {
-            console.log(error);
-        });
-    }
-
-    const deleteTable = (idDeleteTable) => {
-        fetch(`http://localhost:3000/table/${idDeleteTable}`,{
-            method: 'DELETE'
-        }).then(res => {
-            if(!res.ok){
-                console.log("Problem");
-                return;
-            }
-            return res.json();
-        })
-        .then(data => {
-            console.log('succesful');
-        })
-        .then(error => {
-            console.log(error);
-        });
-
-        fetch(`http://localhost:3000/item-table`)
-            .then((res) => res.json())
-            .then(courses => {
-                for(let i = 0; i < courses.length; ++i){
-                    if(courses[i].idTable === idDeleteTable){
-                        deleteData(courses[i].id);
-                    }
-                }
-            })
-    }
-
-    const deleteBoard = (idDeleteBoard) => {
-        fetch(`http://localhost:3000/board/${idDeleteBoard}`,{
-            method: 'DELETE'
-        }).then(res => {
-            if(!res.ok){
-                console.log("Problem");
-                return;
-            }
-            return res.json();
-        })
-        .then(data => {
-            console.log('succesful');
-        })
-        .then(error => {
-            console.log(error);
-        });
-
-        fetch(`http://localhost:3000/table`)
-            .then((res) => res.json())
-            .then(courses => {
-                for(let i = 0; i < courses.length; ++i){
-                    if(courses[i].idBoard === idDeleteBoard){
-                        deleteTable(courses[i].id);
-                    }
-                }
-            })
-    }
-
-    const changeAccessModifier = (course) => {
-        const newItem = {
-            "accessModifier": `${course.accessModifier === 'public' ? 'private' : 'public'}`
-        }
-        fetch(`http://localhost:3000/board/${course.id}`,{
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newItem)
-        }).then(res => {
-            if(!res.ok){
-                console.log("Problem");
-                return;
-            }
-            return res.json();
-        })
-        .then(data => {
-            console.log("success");
-        })
-        .catch(error => {
-            console.log(error);
-        });
-    }
-
     const clickCommunity = () => {
         localStorage.setItem('indexCommunity',0);
     }
@@ -260,7 +151,6 @@ function App(){
         localStorage.setItem('indexCommunity',1);
     }
     // /navBar
-
 
     //
     var navBoardListItem = document.getElementsByClassName('navBar__board-list-item');
@@ -279,98 +169,7 @@ function App(){
             navBarCommunity[1].style.backgroundColor = '#9c9c9c';
         }
     }
-
     //
-
-    // sign
-        const [name, setName] = useState('');
-    
-        const [userNameSignUp, setUserNameSignUp] = useState('');
-
-        const [passwordSignUp, setPasswordSignUp] = useState('');
-
-        const [userNameSignIn, setUserNameSignIn] = useState('');
-
-        const [passwordSignIn, setPasswordSignIn] = useState('');
-
-        const [idUser, setIdUser] = useState(localStorage.getItem('id') ? localStorage.getItem('id') : '');
-
-        const [nameUser, setNameUser] = useState(localStorage.getItem('nameUser') ? localStorage.getItem('nameUser') : '');
-
-        const addAccount = () => {
-            const newItem = {
-                id: `${Date.now().toString(36) + Math.random().toString(36).substring(2)}`,
-                name: `${name}`,
-                username: `${userNameSignUp}`,
-                password: `${passwordSignUp}`
-            };
-            const arrAccount = [];
-            fetch('http://localhost:3000/account')
-                .then((res) => res.json())
-                .then((courses) => {
-                    let check = true;
-                    for(let i = 0; i < courses.length; ++i){
-                        if(name === courses[i].name || userNameSignUp === courses[i].username || passwordSignUp === courses[i].password){
-                            check = false;
-                        }
-                        if(name === "" || userNameSignUp === "" || passwordSignUp === ""){
-                            check = false;
-                        }
-                    }
-                    if(check){
-                        fetch('http://localhost:3000/account',{
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(newItem)
-                        })
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Failed to add item');
-                            }
-                            console.log('New item added successfully.');
-                        })
-                        .catch(error => {
-                            console.error('Error adding item:', error);
-                        });
-
-                        setName('');
-                        setUserNameSignUp('');
-                        setPasswordSignUp('');
-                        alert('Dang ki thanh cong');
-                    } else {
-                        setName('');
-                        setUserNameSignUp('');
-                        setPasswordSignUp('');
-                        alert('Error... (da ton tai || trong)');
-                    }
-                })
-        }
-
-        const signIn = () => {
-            fetch('http://localhost:3000/account')
-                .then((res) => res.json())
-                .then((courses) => {
-                    let check = false;
-                    for(let i = 0; i < courses.length; ++i){
-                        if(courses[i].username === userNameSignIn && courses[i].password === passwordSignIn){
-                            check = true;
-                            setNameUser(courses[i].name);
-                            setIdUser(courses[i].id);
-                            localStorage.setItem('idUser',courses[i].id);
-                            localStorage.setItem('nameUser',courses[i].name);
-                        }
-                    }
-                    if(check){
-                        alert('Dang nhap thanh cong ' + localStorage.getItem('nameUser'));
-                        localStorage.setItem('index',0);
-                    } else {
-                        alert('ten dang nhap hoac mat khau sai !');
-                    }
-                })
-        }
-    // /sign
 
     return (
         <React.Fragment>
@@ -378,126 +177,10 @@ function App(){
             <Clock/>
             <Calendar/>
             <Header
-                id = {idUser}
-                name = {nameUser}
+                id = {localStorage.getItem('idUser')}
+                name = {localStorage.getItem('nameUser')}
             />
-            <React.Fragment>
-                <section class="background-sign"></section>
-                <section class="sign background-color-sign box-shadow-sign">
-                    <div class="sign-times">
-                        <i class="fas fa-cut sign-times__img"></i>
-                    </div>
-                    <div class="sign-account">
-                        <div class="sign-account-in">
-                            <h1 class="sign-account-in__title">Sign in</h1>
-                            <div class="sign-account-in__network">
-                                <i
-                                    class="fas fa-user sign-account-in__network-item"
-                                ></i>
-                                <i
-                                    class="fas fa-user-tag sign-account-in__network-item"
-                                ></i>
-                                <i
-                                    class="fas fa-user-cog sign-account-in__network-item"
-                                ></i>
-                            </div>
-                            <p class="sign-account-in__desc">or use your account</p>
-                            <form action="" class="sign-account-in-form" method="">
-                                <input
-                                    value={userNameSignIn}
-                                    onChange={e => setUserNameSignIn(e.target.value)}
-                                    type="text"
-                                    class="sign-account-in-form__input"
-                                    placeholder=" Username"
-                                    name=""
-                                />
-                                <input
-                                    value={passwordSignIn}
-                                    onChange={e => setPasswordSignIn(e.target.value)}
-                                    type="password"
-                                    class="sign-account-in-form__input"
-                                    placeholder=" Password"
-                                    name=""
-                                />
-                                <a href="#" class="sign-account-in-form__link-forget"
-                                    >Forgot your password ?</a>
-                                <button
-                                    onClick={() => signIn()}
-                                    className='sign-account-in-form__submit'
-                                >
-                                    SIGN IN
-                                </button>
-                            </form>
-                        </div>
-                        <div class="sign-account-up">
-                            <h1 class="sign-account-up__title">Create Account</h1>
-                            <div class="sign-account-up__network">
-                                <i
-                                    class="fab fa-facebook-f sign-account-up__network-item"
-                                ></i>
-                                <i
-                                    class="fab fa-google-plus-g sign-account-up__network-item"
-                                ></i>
-                                <i
-                                    class="fab fa-linkedin-in sign-account-up__network-item"
-                                ></i>
-                            </div>
-                            <p class="sign-account-up__desc">
-                                or use your email for registration
-                            </p>
-                            <form action="" class="sign-account-up-form" method="">
-                                <input
-                                    value={name}
-                                    onChange={e => setName(e.target.value)}
-                                    type="text"
-                                    class="sign-account-up-form__input"
-                                    placeholder=" Name"
-                                    name=""
-                                />
-                                <input
-                                    value={userNameSignUp}
-                                    onChange={e => setUserNameSignUp(e.target.value)}
-                                    type="text"
-                                    class="sign-account-up-form__input"
-                                    placeholder=" Username"
-                                    name=""
-                                />
-                                <input
-                                    value={passwordSignUp}
-                                    onChange={e => setPasswordSignUp(e.target.value)}
-                                    type="password"
-                                    class="sign-account-up-form__input"
-                                    placeholder=" Password"
-                                    name=""
-                                />
-                                <button 
-                                    onClick={() => addAccount()}
-                                    className='sign-account-up-form__submit'
-                                >
-                                    SIGN UP
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="sign-move">
-                        <div class="sign-move-up">
-                            <h1 class="sign-move-up__title">Hello, Friend!</h1>
-                            <p class="sign-move-up__desc">
-                                Enter your personal details and start journey with us
-                            </p>
-                            <button class="sign-move-up__button non-button">SIGN UP</button>
-                        </div>
-                        <div class="sign-move-in">
-                            <h1 class="sign-move-in__title">Welcome Back!</h1>
-                            <p class="sign-move-in__desc">
-                                To keep connected with us please login with your
-                                personal info
-                            </p>
-                            <button class="sign-move-in__button non-button">SIGN IN</button>
-                        </div>
-                    </div>
-                </section>
-            </React.Fragment>
+            <Sign/>
             <section className='navBar check'>
                 <button 
                     className='navBar__hidden non-button'
@@ -534,41 +217,13 @@ function App(){
                     <input value={nameBoard} onChange={e => setNameBoard(e.target.value)} type='text' className={`navBar__board-input ${hidden ? "" : "dp-n"}`} placeholder=' Write your new board'/>
                     <div className='navBar__board-list'>
                         {
-                            arrBoard.map((course) => {
+                            arrBoard.map((course) => { ///
                                 return (
-                                    <React.Fragment>
-                                        <div className='navBar__board-list-item-form'>
-                                            <button
-                                                className="navBar__board-list-item"
-                                                onClick={() => {handleFollowBoard(course)}}
-                                            >
-                                                <i className="fas fa-chalkboard navBar__board-list-item-img"></i><p className={`navBar__board-list-item-title ${hidden ? "" : "dp-n"}`}>{course.title}</p>
-                                            </button>
-                                            <button 
-                                                className={`navBar__board-list-item-hidden non-button ${hidden ? "" : "dp-n"} ${course.idUser === localStorage.getItem('idUser') ? "" : "dp-n"}`}
-                                            >
-                                                <i class="fas fa-ellipsis-h navBar__board-list-item-hidden-img"></i>
-                                            </button>
-                                            <div className='navBar__board-list-item-tool dp-n'>
-                                                <div className="navBar__board-list-item-tool-form">
-                                                    <i className="fas fa-times navBar__board-list-item-tool-form-times"></i>
-                                                    <div style={{"color": "#d3d3d3", "text-align": "center", "padding": "5px", "border-bottom": "1px solid #5e5e5e"}}>List actions</div>
-                                                    <button 
-                                                        className="navBar__board-list-item-tool-form-delete navBar__board-list-item-tool-form-item"
-                                                        onClick={() => deleteBoard(course.id)}
-                                                    >
-                                                        Delete board
-                                                    </button>
-                                                    <button 
-                                                        className='navBar__board-list-item-tool-form-accessModifier navBar__board-list-item-tool-form-item'
-                                                        onClick={() => changeAccessModifier(course)}
-                                                    >
-                                                        {` Change to ${course.accessModifier === "public" ? "private" : "public"}`}
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </React.Fragment>
+                                    <Board
+                                        course={course}
+                                        hidden={hidden}
+                                        arrBoard={arrBoard}
+                                    />
                                 ) 
                             })
                         }

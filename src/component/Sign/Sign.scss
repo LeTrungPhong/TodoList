@@ -1,0 +1,311 @@
+@import "variables";
+@import "resets";
+
+.sign {
+    width: 45vw;
+    height: 60vh;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    z-index: 4;
+    display: none;
+    opacity: 0;
+    transition: 0.25s ease-in-out;
+
+    &-times {
+        width: 100%;
+        display: flex;
+        justify-content: center;   
+        color: #2e2e2e;
+        position: absolute;
+        transform: translate(0px, -40px);
+        transition: 0.25s ease-in-out;
+
+        &__img  {
+            padding: 5px;
+            cursor: pointer;
+            transform: rotate(90deg);
+
+            &:hover {
+                color: #777777;
+            }
+        }
+    }
+
+    &-account {
+        width: 50%;
+        display: flex;
+        transition: 0.25s ease-in-out;
+        position: relative;
+        align-items: center;
+        background-color: $background-color-sign-in;
+
+        &-in {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            transition: 0.25s ease-in-out;
+            opacity: 1;
+            position: absolute;
+
+            &__title {
+                font-size: 35px;
+                font-family: sans-serif;
+            }
+
+            &__network {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+
+                &-item {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 100%;
+                    border: 1px solid $boder-sign-in-network-item;
+                    transition: 0.25s ease-in-out;
+                    &:hover {
+                        background-color: $background-color-sign-in-input;
+                    }
+                }
+            }
+
+            &__desc {
+                color: $color-sign-in-desc;
+                font-weight: 600;
+                font-size: 15px;
+            }
+
+            &-form  {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+
+                &__input {
+                    width: 80%;
+                    font-size: 15px;
+                    padding: 8px;
+                    background-color: $background-color-sign-in-input;
+                    border: none;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+                &__link-forget {
+                    font-style: italic;
+                    font-size: 12px;
+                    color: $color-sign-in-link-forget;
+                    @include resetLink();
+                }
+
+                &__submit {
+                    width: 50%;
+                    cursor: pointer;
+                    font-size: 15px;
+                    font-family: Comic Sans MS;
+                    color: $background-color-sign-in;
+                    padding: 5px 35px 5px 35px;
+                    background-color: $background-color-sign-up;
+                    border-radius: 20px;
+                    border-color: $background-color-sign-in;
+                    transition: 0.25s ease-in-out;
+                    &:hover {
+                        background-color: $background-color-sign-button-hover;
+                    }
+                }
+            }
+        }
+
+        &-up {
+            width: 100%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            transition: 0.25s ease-in-out;
+            opacity: 0;
+            position: absolute;
+
+            &__title {
+                font-size: 35px;
+                font-family: sans-serif;
+            }
+
+            &__network {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+
+                &-item {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 100%;
+                    border: 1px solid $boder-sign-in-network-item;
+                    transition: 0.25s ease-in-out;
+                    &:hover {
+                        background-color: $background-color-sign-in-input;
+                    }
+                }
+            }
+
+            &__desc {
+                color: $color-sign-in-desc;
+                font-weight: 600;
+                font-size: 12px;
+            }
+
+            &-form {
+                text-align: center;
+
+                &__input {
+                    margin: 5px;
+                    width: 80%;
+                    font-size: 15px;
+                    padding: 8px;
+                    background-color: $background-color-sign-in-input;
+                    border: none;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+                &__submit {
+                    cursor: pointer;
+                    font-size: 15px;
+                    font-family: Comic Sans MS;
+                    color: $background-color-sign-in;
+                    padding: 5px 35px 5px 35px;
+                    background-color: $background-color-sign-up;
+                    border-radius: 20px;
+                    border-color: $background-color-sign-in;
+                    transition: 0.25s ease-in-out;
+                    &:hover {
+                        background-color: $background-color-sign-button-hover;
+                    }
+                }
+            }
+        }
+    }
+
+    &-move {
+        display: flex;
+        width: 50%;
+        background-color: $background-color-sign-up;
+        transition: 0.25s ease-in-out;
+        position: relative;
+        align-items: center;
+
+        &-up {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 20px;
+            transition: 0.25s ease-in-out;
+            opacity: 1;
+            position: absolute;
+
+            &__title {
+                font-size: 30px;
+                color: $background-color-sign-in;
+                font-family: Tahoma;
+            }
+
+            &__desc {
+                width: 80%;
+                font-size: 15px;
+                color: #cbcbcb;
+                font-weight: 600;
+            }
+
+            &__button {
+                cursor: pointer;
+                font-size: 15px;
+                font-family: Comic Sans MS;
+                color: $background-color-sign-in;
+                padding: 5px 35px 5px 35px;
+                background-color: $background-color-sign-up;
+                border-radius: 20px;
+                border-color: $background-color-sign-in;
+                transition: 0.25s ease-in-out;
+
+                &:hover {
+                    background-color: $background-color-sign-button-hover;
+                }
+            }
+        }
+
+        &-in {
+            width: 100%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 20px;
+            transition: 0.25s ease-in-out;
+            opacity: 0;
+            position: absolute;
+
+            &__title {
+                font-size: 30px;
+                color: $background-color-sign-in;
+                font-family: Tahoma;
+            }
+
+            &__desc {
+                width: 80%;
+                font-size: 15px;
+                color: #cbcbcb;
+                font-weight: 600;
+            }
+
+            &__button {
+                cursor: pointer;
+                font-size: 15px;
+                font-family: Comic Sans MS;
+                color: $background-color-sign-in;
+                padding: 5px 35px 5px 35px;
+                background-color: $background-color-sign-up;
+                border-radius: 20px;
+                border-color: $background-color-sign-in;
+                transition: 0.25s ease-in-out;
+
+                &:hover {
+                    background-color: $background-color-sign-button-hover;
+                }
+            }
+        }
+    }
+}
+
+.background-sign {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #fff, $alpha: 0.6);
+    z-index: 3;
+    transition: 0.25s ease-in-out;
+    opacity: 1;
+}

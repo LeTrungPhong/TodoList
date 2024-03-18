@@ -1,15 +1,13 @@
-// import React from 'react'
-// import ReactDOM from 'react-dom'
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-// const { useState } = React;
-// const { useEffect } = React;
+const { useState } = React;
+const { useEffect } = React;
 
-// function NavBar(){
-    
+function NavBar(){
+    return (
+        <div></div>
+    )
+}
 
-//     return (
-        
-//     )
-// }
-
-// export default NavBar;
+export default NavBar;

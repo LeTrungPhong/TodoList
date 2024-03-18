@@ -1,3 +1,4 @@
+import './Table.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -158,11 +159,11 @@ function Table(course){
                         }
                     </ul>
                     <div className={`content__undefined ${jobs.length ? "dp-n" : ""} `}>You should create todo</div>
-                    <div 
-                        className={`content__hidden-insert ${course.boolean ? "" : "dp-n"}`}
+                    <button 
+                        className={`content__hidden-insert non-button ${course.boolean ? "" : "dp-n" }`}
                     >
                         Add a card
-                    </div>
+                    </button>
                     <section className="content__insert dp-n">
                         <input 
                             value={job} 
@@ -180,12 +181,12 @@ function Table(course){
                         </div>
                     </section>
                     <section className="content__footer">
-                        <p className="content__footer-count">{`(${jobs.length}) pending tasks`}</p>
+                        {/* <p className="content__footer-count">{`(${jobs.length}) pending tasks`}</p> */}
                         <button 
-                            className={`content__footer-clear ${course.boolean ? "" : "dp-n"}`}
+                            className={`content__footer-clear ${course.boolean ? "" : "dp-n"} ${jobs.length == 0 ? "dp-n" : ""}`}
                             onClick={() => {resetData()}}
                         >
-                            Clear All
+                            Clear All <p className="content__footer-count">{jobs.length}<i class="fas fa-tasks content__footer-count-img"></i></p> pending tasks
                         </button>
                     </section>
                 </article>

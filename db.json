@@ -93,16 +93,10 @@
       "accessModifier": "private"
     },
     {
-      "id": "lttvbjfofw4mhpoour",
-      "title": "adadad",
-      "idUser": "ltr9vgus89fqqdhp2xw",
-      "accessModifier": "private"
-    },
-    {
       "id": "lttvvsryovcc3dr4e7",
       "title": "che dinh",
       "idUser": "ltr9bl0j0uehf3cvadyk",
-      "accessModifier": "private"
+      "accessModifier": "public"
     },
     {
       "id": "lttvvxno1g02f9tx0pr",
@@ -114,42 +108,18 @@
       "id": "lttvw2s5hkszcn0tzge",
       "title": "my house",
       "idUser": "ltr9bl0j0uehf3cvadyk",
-      "accessModifier": "private"
-    },
-    {
-      "id": "lttvwcf02b44nkqiyn9",
-      "title": "numberic",
-      "idUser": "ltr9bl0j0uehf3cvadyk",
       "accessModifier": "public"
-    },
-    {
-      "id": "lttvwnec5lsbc9kxu65",
-      "title": "ptttkgt",
-      "idUser": "ltr9bl0j0uehf3cvadyk",
-      "accessModifier": "public"
-    },
-    {
-      "id": "lttvwqijqsi80dqalsj",
-      "title": "dotnet",
-      "idUser": "ltr9bl0j0uehf3cvadyk",
-      "accessModifier": "private"
     },
     {
       "id": "lttvwtqbdzzfbb4807a",
       "title": "java",
       "idUser": "ltr9bl0j0uehf3cvadyk",
-      "accessModifier": "public"
-    },
-    {
-      "id": "lttxr7244kbkxnc4v2c",
-      "title": "adada",
-      "idUser": "ltr9bl0j0uehf3cvadyk",
       "accessModifier": "private"
     },
     {
-      "id": "lttxr9ecen8hc6xh895",
-      "title": "wqeqweq",
-      "idUser": "ltr9bl0j0uehf3cvadyk",
+      "id": "ltu39zubu597d533viq",
+      "title": "adad",
+      "idUser": "ltr9vgus89fqqdhp2xw",
       "accessModifier": "private"
     }
   ],
@@ -195,67 +165,22 @@
       "idBoard": "ltrekwrccgxq9aisbg8"
     },
     {
-      "id": "lttvqysdn91g33gz0fr",
-      "title": "adwww",
-      "idBoard": "lttvbjfofw4mhpoour"
+      "id": "ltuv7xtcamkryzsgwye",
+      "title": "sdada",
+      "idBoard": "0"
     },
     {
-      "id": "lttywpuv3agjr47aei9",
-      "title": "adad",
-      "idBoard": "lttvwcf02b44nkqiyn9"
+      "id": "ltuxh1m3pp909xk3kzi",
+      "title": "123123",
+      "idBoard": "0"
     },
     {
-      "id": "lttyx28t7g51n4fnkxi",
-      "title": "ad2313",
-      "idBoard": "lttvwnec5lsbc9kxu65"
+      "id": "ltwdoh56ovxdvfgixed",
+      "title": "Dog",
+      "idBoard": "0"
     }
   ],
   "item-table": [
-    {
-      "id": "ltjy4rwqn5hvvpep50l",
-      "name": "di xe may",
-      "idTable": "0"
-    },
-    {
-      "id": "ltjy51qio7ckk5sy4vr",
-      "name": "lam bao cao",
-      "idTable": "0"
-    },
-    {
-      "id": "ltjy55lk4taug3p9gwr",
-      "name": "cong nghe phan mem",
-      "idTable": "0"
-    },
-    {
-      "id": "ltjy5iqavdox8whgfnk",
-      "name": "use computer",
-      "idTable": "0"
-    },
-    {
-      "id": "ltjy5lux7fehpwn6dxh",
-      "name": "fix bug",
-      "idTable": "0"
-    },
-    {
-      "id": "ltjy5pco5ia4sbjbzvc",
-      "name": "arrray",
-      "idTable": "0"
-    },
-    {
-      "id": "ltjy5ukcdo9znzdc91k",
-      "name": "danh bia",
-      "idTable": "0"
-    },
-    {
-      "id": "ltjy5z4xariak95n6wt",
-      "name": "an com",
-      "idTable": "0"
-    },
-    {
-      "id": "ltjy64x6p99z9ba5rec",
-      "name": "mua do",
-      "idTable": "0"
-    },
     {
       "id": "ltk1avpvn11ohmtshtm",
       "name": "",
@@ -327,31 +252,6 @@
       "idTable": "ltom59mdz1jtsqyga28"
     },
     {
-      "id": "ltr7qlds3m7ctmb6uat",
-      "name": "dadad",
-      "idTable": "0"
-    },
-    {
-      "id": "ltr7qo7xzaumqz2ep2i",
-      "name": "adadad",
-      "idTable": "0"
-    },
-    {
-      "id": "ltr7qqod77lx2pt64q5",
-      "name": "fafaf",
-      "idTable": "0"
-    },
-    {
-      "id": "ltr7qt4ey61g3v6ekj",
-      "name": "addddddddd",
-      "idTable": "0"
-    },
-    {
-      "id": "ltr7qx5hxav5ai5sfbj",
-      "name": "fffffffffffff",
-      "idTable": "0"
-    },
-    {
       "id": "ltrcg4pwl2a3n0rmhy",
       "name": "check",
       "idTable": "ltr43ivw11k866xvqx9"
@@ -372,19 +272,24 @@
       "idTable": "ltreimy82lhccsk9yqi"
     },
     {
-      "id": "lttvxnprhau4afcqxoa",
-      "name": "dawdawd",
+      "id": "ltuu1vi36gexebpjssm",
+      "name": "1231123",
+      "idTable": "ltoohl6ld2qc5g38a1w"
+    },
+    {
+      "id": "ltx2lxbsnwsl7rsh3xk",
+      "name": "adadwad",
       "idTable": "0"
     },
     {
-      "id": "lttyws92xcg0biz7umg",
-      "name": "ad",
-      "idTable": "lttywpuv3agjr47aei9"
+      "id": "ltx2pb7q61r9kahw91u",
+      "name": "adadad",
+      "idTable": "0"
     },
     {
-      "id": "lttyx5p1juph2im1m9",
-      "name": "123444",
-      "idTable": "lttyx28t7g51n4fnkxi"
+      "id": "ltx39l8hsagovt49fad",
+      "name": "ădwad",
+      "idTable": "ltuv7xtcamkryzsgwye"
     }
   ]
 }

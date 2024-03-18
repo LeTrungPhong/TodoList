@@ -20,7 +20,7 @@ setTimeout(() => {
             });
         }
     }
-  
+
     var calendar = document.querySelector('.calendar');
     var calendarChoiceMonthValue = document.querySelector('.calendar__choice-month-value');
     var calendarChoiceMonthList = document.querySelector('.calendar__choice-month-list');
@@ -214,6 +214,8 @@ setTimeout(() => {
     var signMoveUpButton = document.querySelector('.sign-move-up__button');
     var signMoveInButton = document.querySelector('.sign-move-in__button');
 
+    console.log(signMoveUpButton);
+
     signMoveUpButton.addEventListener('click',() => {
         signMove.style.transform = "translatex(-100%)";
         signAccount.style.transform = "translatex(100%)";
@@ -357,4 +359,9 @@ setTimeout(() => {
             navBarBoardListItemTool[i].classList.toggle('dp-n');
         })
     }
+
+
+    //
+
+    //
 },1000);
